@@ -1,9 +1,20 @@
 terraform {
-  # backend "gcs" {
-  #   bucket = "gke-terraform-prod-state"
-  #   prefix = "autopilot/prod"
-  # }
+  cloud {
+    organization = "DEvOps_Bootcamp-1"
+
+    workspaces {
+      name = "dev"          # workspace name
+    }
+  }
 }
+
+
+
+# backend "gcs" {
+#   bucket = "gke-terraform-prod-state"
+#   prefix = "autopilot/prod"
+# }
+
 
 provider "google" {
   project = var.project_id
@@ -50,3 +61,4 @@ module "gke" {
   cluster_secondary_range_name  = module.vpc.pods_range_name
   services_secondary_range_name = module.vpc.services_range_name
 }
+
