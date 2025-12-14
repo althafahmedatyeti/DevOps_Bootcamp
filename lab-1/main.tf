@@ -1,10 +1,6 @@
 terraform {
   cloud {
     organization = "DEvOps_Bootcamp-1"
-
-    workspaces {
-      name = "dev"          # workspace name
-    }
   }
 }
 
@@ -60,5 +56,9 @@ module "gke" {
   # Secondary ranges
   cluster_secondary_range_name  = module.vpc.pods_range_name
   services_secondary_range_name = module.vpc.services_range_name
+  depends_on = [
+    module.vpc
+  ]
 }
+
 
