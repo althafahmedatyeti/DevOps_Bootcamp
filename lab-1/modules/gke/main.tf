@@ -37,5 +37,11 @@ resource "google_container_cluster" "autopilot" {
   release_channel {
     channel = "REGULAR"
   }
+
+  depends_on = [
+    google_service_account.gke_sa,
+    google_project_iam_member.roles
+  ]
 }
+
 
