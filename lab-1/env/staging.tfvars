@@ -10,8 +10,10 @@ pods_cidr     = "10.40.0.0/16"
 services_cidr = "10.41.0.0/20"
 
 cluster_name = "staging-autopilot-cluster"
+
 secondary_range_name  = "pods"
-services_secondary_range_name = "services"
+secondary_range_name_services = "services"
 
 enabled = true
+
 
