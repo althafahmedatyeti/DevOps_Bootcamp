@@ -9,11 +9,15 @@ subnet_cidr = "10.30.0.0/24"
 pods_cidr     = "10.40.0.0/16"
 services_cidr = "10.41.0.0/20"
 
-cluster_name = "staging-autopilot-cluster"
+# -------------------------
+# GKE CLUSTER VALUES
+# -------------------------
+cluster_name = "staging-autopilot"   # change per environment
 
 secondary_range_name  = "pods"
 secondary_range_name_services = "services"
 
-enabled = true
+enabled = true  
+
 
 
