@@ -13,7 +13,9 @@ services_cidr = "10.70.0.0/20"
 # GKE
 cluster_name = "prod-autopilot-cluster"
 
-cluster_secondary_range_name  = "pods"
-services_secondary_range_name = "services"
+
+secondary_range_name  = "pods"
+secondary_range_name_services = "services"
 
 enabled = true
+
