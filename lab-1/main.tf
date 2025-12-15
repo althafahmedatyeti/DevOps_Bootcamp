@@ -3,15 +3,6 @@ terraform {
     organization = "DEvOps_Bootcamp-1"
   }
 }
-
-
-
-# backend "gcs" {
-#   bucket = "gke-terraform-prod-state"
-#   prefix = "autopilot/prod"
-# }
-
-
 provider "google" {
   project = var.project_id
   region  = var.region
@@ -60,5 +51,6 @@ module "gke" {
     module.vpc
   ]
 }
+
 
 
