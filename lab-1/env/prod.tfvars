@@ -13,11 +13,12 @@ services_cidr = "10.70.0.0/20"
 # -------------------------
 # GKE CLUSTER VALUES
 # -------------------------
-cluster_name = "prod-autopilot"   # change per environment
+cluster_name = "prod-autopilot-1"   # change per environment
 
 secondary_range_name  = "pods"
 secondary_range_name_services = "services"
 
 enabled = true  
+
 
 
