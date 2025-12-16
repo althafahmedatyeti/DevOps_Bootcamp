@@ -3,6 +3,7 @@
 # -------------------------------
 
 resource "google_service_account" "gke_sa" {
+  count = var.enable_cluster ? 1 : 0
   account_id   = "${var.cluster_name}-sa"
   display_name = "GKE Autopilot Service Account"
 }
@@ -17,7 +18,7 @@ resource "google_project_iam_member" "roles" {
 
   project = var.project_id
   role    = each.key   #one role at a time
-  member  = "serviceAccount:${google_service_account.gke_sa["enable"].email}" #giving iam roles to this service Account
+  member  = "serviceAccount:${google_service_account.gke_sa[0].email}" #giving iam roles to this service Account
 }
 
 # AUTOPILOT GKE CLUSTER
@@ -44,6 +45,7 @@ resource "google_container_cluster" "autopilot" {
     google_project_iam_member.roles
   ]
 }
+
 
 
 
