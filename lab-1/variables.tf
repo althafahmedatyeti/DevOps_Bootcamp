@@ -41,3 +41,7 @@ variable "enabled" {
   type    = bool
   default = true
 }
+variable "enable_cluster"{
+  type    = bool
+  default = true
+
