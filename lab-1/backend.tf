@@ -1,8 +1,8 @@
 terraform {
   backend "remote" {
-    organization = "Sai-atyeti"
+    organization = "ALTHAF-ORGS"
     workspaces {
-      prefix = "gke-dev"
+      prefix = "gke"
     }
   }
 }
