@@ -23,6 +23,7 @@ module "vpc" {
   pods_cidr      = var.pods_cidr
   services_cidr  = var.services_cidr
   region         = var.region
+  enable_cluster = var.enable_cluster
 }
 
 # ---------------------------------------
@@ -46,6 +47,7 @@ module "gke" {
     module.vpc
   ]
 }
+
 
 
 
