@@ -18,7 +18,8 @@ cluster_name = "prod-autopilot-1"   # change per environment
 secondary_range_name  = "pods"
 secondary_range_name_services = "services"
 
-enabled = true  
+enable_cluster = false
+
 
 
 
