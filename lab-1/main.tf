@@ -1,8 +1,3 @@
-terraform {
-  cloud {
-    organization = "DEvOps_Bootcamp-1"
-  }
-}
 provider "google" {
   project = var.project_id
   region  = var.region
@@ -51,6 +46,7 @@ module "gke" {
     module.vpc
   ]
 }
+
 
 
 
