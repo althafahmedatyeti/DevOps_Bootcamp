@@ -9,15 +9,15 @@ resource "google_service_account" "gke_sa" {
 
 # IAM roles that the GKE service account needs
 resource "google_project_iam_member" "roles" {
-  for_each = toset([
+  for_each = var.enable_cluster ? toset([
     "roles/container.admin",
     "roles/iam.serviceAccountUser",
     "roles/compute.networkAdmin",
-  ])
+  ]) : []
 
   project = var.project_id
-  role    = each.key
-  member  = "serviceAccount:${google_service_account.gke_sa.email}"
+  role    = each.key   #one role at a time
+  member  = "serviceAccount:${google_service_account.gke_sa["enable"].email}" #giving iam roles to this service Account
 }
 
 # AUTOPILOT GKE CLUSTER
@@ -44,6 +44,7 @@ resource "google_container_cluster" "autopilot" {
     google_project_iam_member.roles
   ]
 }
+
 
 
 
