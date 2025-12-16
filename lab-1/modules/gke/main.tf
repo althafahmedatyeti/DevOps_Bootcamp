@@ -22,6 +22,7 @@ resource "google_project_iam_member" "roles" {
 
 # AUTOPILOT GKE CLUSTER
 resource "google_container_cluster" "autopilot" {
+  for_each = var.enable_cluster ? {"enable" = true} : {}
   name             = var.cluster_name
   location         = var.region
   project          = var.project_id
@@ -43,5 +44,6 @@ resource "google_container_cluster" "autopilot" {
     google_project_iam_member.roles
   ]
 }
+
 
 
