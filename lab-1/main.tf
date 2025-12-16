@@ -23,7 +23,6 @@ module "vpc" {
   pods_cidr      = var.pods_cidr
   services_cidr  = var.services_cidr
   region         = var.region
-  enable_cluster = var.enable_cluster
 }
 
 # ---------------------------------------
@@ -39,6 +38,7 @@ module "gke" {
   # From VPC module outputs
   network_id   = module.vpc.network_id
   subnet_id    = module.vpc.subnet_id
+  enable_cluster = var.enable_cluster
 
   # Secondary ranges
   cluster_secondary_range_name  = module.vpc.pods_range_name
@@ -47,6 +47,7 @@ module "gke" {
     module.vpc
   ]
 }
+
 
 
 
