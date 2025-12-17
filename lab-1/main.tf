@@ -27,7 +27,7 @@ module "vpc" {
 
 # ---------------------------------------
 # GKE AUTOPILOT MODULE
-# ---------------------------------------
+
 module "gke" {
   source = "./modules/gke"
 
@@ -47,6 +47,7 @@ module "gke" {
     module.vpc
   ]
 }
+
 
 
 
