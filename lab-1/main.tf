@@ -12,6 +12,7 @@ credentials = file("fake-creds.json")
 
 # ---------------------------------------
 # VPC MODULE 
+#.....................................
 
 module "vpc" {
   source = "./modules/vpc"
@@ -47,6 +48,7 @@ module "gke" {
     module.vpc
   ]
 }
+
 
 
 
