@@ -21,7 +21,8 @@ cluster_name = "dev-autopilot-0"   # change per environment
 secondary_range_name  = "pods"
 secondary_range_name_services = "services"
 
-enabled_cluster = true   # set false to disable cluster for an environment
+enable_cluster = true   # set false to disable cluster for an environment
+
 
 
 
