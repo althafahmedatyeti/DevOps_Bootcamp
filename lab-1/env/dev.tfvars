@@ -4,7 +4,7 @@ region = "us-central1"
 
 # -------------------------
 # VPC VALUES
-# -------------------------
+# -----
 vpc_name    = "autopilot-vpc"
 subnet_name = "autopilot-subnet"
 
@@ -22,6 +22,7 @@ secondary_range_name  = "pods"
 secondary_range_name_services = "services"
 
 enable_cluster = true   #set false to disable cluster for an environment
+
 
 
 
