@@ -12,7 +12,7 @@ provider "google-beta" {
 
 # ---------------------------------------
 # VPC MODULE 
-#.....................................
+
 
 module "vpc" {
   source = "./modules/vpc"
@@ -48,6 +48,7 @@ module "gke" {
     module.vpc
   ]
 }
+
 
 
 
