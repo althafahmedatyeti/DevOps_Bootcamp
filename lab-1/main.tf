@@ -7,12 +7,12 @@ provider "google" {
 provider "google-beta" {
   project = var.project_id
   region  = var.region
-#credentials = file("fake-creds.json")
+  #credentials = file("fake-creds.json")
 }
 
 # ---------------------------------------
 # VPC MODULE 
-
+#........................................
 
 module "vpc" {
   source = "./modules/vpc"
@@ -48,6 +48,7 @@ module "gke" {
     module.vpc
   ]
 }
+
 
 
 
