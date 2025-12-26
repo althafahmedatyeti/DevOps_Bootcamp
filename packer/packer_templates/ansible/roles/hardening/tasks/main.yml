@@ -1,0 +1,45 @@
+---
+- name: Flush handlers before hardening
+  meta: flush_handlers
+
+- name: Disable root SSH login
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^PermitRootLogin'
+    line: 'PermitRootLogin no'
+    backup: yes
+
+- name: Restart SSH immediately
+  service:
+    name: ssh
+    state: restarted
+
+- name: Install UFW
+  apt:
+    name: ufw
+    state: present
+    update_cache: yes
+
+- name: Allow SSH through UFW
+  ufw:
+    rule: allow
+    name: OpenSSH
+
+- name: Enable UFW firewall
+  ufw:
+    state: enabled
+
+# ✅ VALIDATE BEFORE LOCKING
+- name: Validate sudoers
+  command: visudo -cf /etc/sudoers
+
+# 🔴 FINAL STEP — NO TASKS AFTER THIS
+- name: Block sudo for ubuntu
+  copy:
+    dest: /etc/sudoers.d/99-ubuntu-deny-all
+    owner: root
+    group: root
+    mode: '0440'
+    content: |
+      ubuntu ALL=(ALL) !ALL
+

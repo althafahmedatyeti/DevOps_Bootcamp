@@ -1,0 +1,10 @@
+- name: Provision base image
+  hosts: all
+  become: yes
+  gather_facts: false
+  roles:
+    - common
+    - monitoring-agent
+    - logging-agent
+    - hardening
+
