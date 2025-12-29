@@ -1,0 +1,14 @@
+- name: Provision base image
+  hosts: all
+  become: yes
+  gather_facts: false
+  roles:
+    - common
+<<<<<<< HEAD
+=======
+    - users
+>>>>>>> 7131c09 (add groups and users and admins)
+    - monitoring-agent
+    - logging-agent
+    - hardening
+

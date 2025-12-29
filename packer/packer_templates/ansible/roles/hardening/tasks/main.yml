@@ -1,0 +1,82 @@
+<<<<<<< HEAD
+---
+- name: Flush handlers before hardening
+  meta: flush_handlers
+
+- name: Disable root SSH login
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^PermitRootLogin'
+    line: 'PermitRootLogin no'
+    backup: yes
+=======
+
+- name: Flush all handlers before sudo lockdown
+  meta: flush_handlers
+  
+# - name: Disable root SSH login
+#   lineinfile:
+#     path: /etc/ssh/sshd_config
+#     regexp: '^PermitRootLogin'
+#     line: 'PermitRootLogin no'
+#     backup: yes
+>>>>>>> 7131c09 (add groups and users and admins)
+
+- name: Restart SSH immediately
+  service:
+    name: ssh
+    state: restarted
+
+- name: Install UFW
+  apt:
+    name: ufw
+    state: present
+    update_cache: yes
+
+- name: Allow SSH through UFW
+  ufw:
+    rule: allow
+    name: OpenSSH
+
+- name: Enable UFW firewall
+  ufw:
+    state: enabled
+
+<<<<<<< HEAD
+# ✅ VALIDATE BEFORE LOCKING
+- name: Validate sudoers
+  command: visudo -cf /etc/sudoers
+
+# 🔴 FINAL STEP — NO TASKS AFTER THIS
+- name: Block sudo for ubuntu
+  copy:
+    dest: /etc/sudoers.d/99-ubuntu-deny-all
+    owner: root
+    group: root
+    mode: '0440'
+    content: |
+      ubuntu ALL=(ALL) !ALL
+
+=======
+# -------------------------------
+# VALIDATE BEFORE LOCKDOWN
+# -------------------------------
+
+- name: Validate sudoers syntax (pre-check)
+  become: true
+  command: visudo -cf /etc/sudoers
+
+# -------------------------------
+# FINAL STEP — NO TASKS AFTER THIS
+# -------------------------------
+
+# - name: Block root shell escalation via sudo (Ubuntu)
+#   copy:
+#     dest: /etc/sudoers.d/99-block-root-shell
+#     owner: root
+#     group: root
+#     mode: '0440'
+#     content: |
+#       Cmnd_Alias ROOT_SHELLS = /bin/su, /bin/bash, /bin/sh, /usr/bin/sudo -i
+#       ubuntu ALL=(ALL) !ROOT_SHELLS
+>>>>>>> 7131c09 (add groups and users and admins)
