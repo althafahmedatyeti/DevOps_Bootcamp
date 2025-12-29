@@ -1,9 +1,0 @@
-- name: Restrict sudo for admins
-  copy:
-    dest: /etc/sudoers.d/90-admins
-    owner: root
-    mode: '0440'
-    content: |
-      Cmnd_Alias SAFE_CMDS = /bin/systemctl, /usr/bin/journalctl, /usr/bin/apt
-      %sudo ALL=(root) SAFE_CMDS
-  notify: validate sudoers
